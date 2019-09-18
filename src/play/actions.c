@@ -68,3 +68,25 @@ void showAllCards(card c[])
         }
     }
 }
+
+void handlePick(card c[])
+{
+    int i;
+    for(i = 0; i < MAX_CARDS; i++) {
+        if(c[i].cn == 0) {
+            c[i] = getCard();
+            break;
+        }
+    }
+    if(i == MAX_CARDS)
+        printf("maximum cards reached\n");
+}
+
+void handleRelease(card c[])
+{
+    char str[10];
+    printf("which card you want to release ? :")
+    fgets(str, 10, stdin);
+    str[strlen(str) - 1] = '\0';
+    /* hash table required */
+}
