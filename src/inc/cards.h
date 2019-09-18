@@ -18,7 +18,7 @@ typdef enum {
 
 
 typdef struct _card {
-    cardcolor cc;
+    int cc;
     int cn;
 } card;
 
