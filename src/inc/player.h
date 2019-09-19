@@ -7,7 +7,7 @@ typedef struct _player
 {
     int isUno;
     int nCards;
-    cards c[MAX_CARDS];
+    card c[MAX_CARDS];
     char name[100];
 } player;
 

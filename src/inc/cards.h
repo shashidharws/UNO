@@ -1,14 +1,14 @@
 #ifndef __CARDS_H__
 #define __CARDS_H__
 
-typdef enum {
+typedef enum {
     blue,
     red,
     green,
     yellow
 } cardColor;
 
-typdef enum {
+typedef enum {
     skip = 10,
     reverse,
     two_plus,
@@ -17,8 +17,8 @@ typdef enum {
 } specialCards;
 
 
-typdef struct _card {
-    int cc;
+typedef struct _card {
+    cardColor cc;
     int cn;
 } card;
 
