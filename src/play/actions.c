@@ -5,7 +5,7 @@
 #include "cards.h"
 #include "player.h"
 
-card getCard()
+static card getCard()
 {
     card c;
     c.cn = (rand() % 15) + 1;
@@ -23,7 +23,7 @@ void distribute(card c[])
     }
 }
 
-int specialCard(char color, card c)
+static int specialCard(char color, card c)
 {
     if(c.cn < 10)
         return 0;
@@ -75,20 +75,7 @@ void showAllCards(card c[])
     }
 }
 
-void handlePick(card c[])
-{
-    int i;
-    for(i = 0; i < MAX_CARDS; i++) {
-        if(c[i].cn == 0) {
-            c[i] = getCard();
-            break;
-        }
-    }
-    if(i == MAX_CARDS)
-        printf("maximum cards reached\n");
-}
-
-int releaseCard(card c[], card rel_c)
+static int releaseCard(card c[], card rel_c)
 {
     int i;
     for(i = 0; i < MAX_CARDS; i++) {
@@ -104,7 +91,7 @@ int releaseCard(card c[], card rel_c)
     return 0;
 }
 
-int releaseSpecialCard(card c[], char *cType)
+static int releaseSpecialCard(card c[], char *cType)
 {
     card rel_c = {0, 0};
     if(!strcmp("c_c", cType))
@@ -114,7 +101,7 @@ int releaseSpecialCard(card c[], char *cType)
     return releaseCard(c, rel_c);
 }
 
-int specialColorCardRelease(char *cType, card *c)
+static int specialColorCardRelease(char *cType, card *c)
 {
     if(isdigit(cType))
         return 0;
@@ -129,6 +116,19 @@ int specialColorCardRelease(char *cType, card *c)
         c->cn = 0;
     }
     return 1;
+}
+
+void handlePick(card c[])
+{
+    int i;
+    for(i = 0; i < MAX_CARDS; i++) {
+        if(c[i].cn == 0) {
+            c[i] = getCard();
+            break;
+        }
+    }
+    if(i == MAX_CARDS)
+        printf("maximum cards reached\n");
 }
 
 int handleRelease(card c[])
